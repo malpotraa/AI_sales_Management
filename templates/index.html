@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <titleCustomer Data Input</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+ <div class="login">
+	<h1>Enter Customer Data</h1>
+
+     	<!-- Main Input For Receiving Query to our ML -->
+	<form action="{{ url_for('predict')}}" method="post">
+  		<select name="Technology_Primary" placeholder="Technology Primary" required="required">
+			<option value="" disabled selected>Technology Primary</option>
+    			<option value="ERP Implementation">ERP Implementation</option>
+    			<option value="Technical Business Solutions">Technical Business Solutions</option>
+    			<option value="Legacy Modernization">Legacy Modernization</option>
+    			<option value="Analytics">Analytics</option>
+  		</select><br>
+  		<select name="City" placeholder="City" required="required">
+			<option value="" disabled selected>City</option>
+    			<option value="Mumbai">Mumbai</option>
+    			<option value="Delhi">Delhi</option>
+   			<option value="Bengaluru">Bengaluru</option>
+    			<option value="Hyderabad">Hyderabad</option>
+    			<option value="Pune">Pune</option>
+    			<option value="Chennai">Chennai</option>
+    			<option value="Kolkata">Kolkata</option>
+  		</select><br>
+  		<select name="B2B_Sales_Medium" placeholder="B2B Sales Medium" required="required">
+			<option value="" disabled selected>B2B Sales Medium</option>
+    			<option value="Marketing">Marketing</option>
+    			<option value="Enterprise Sellers">Enterprise Sellers</option>
+    			<option value="Partners">Partners</option>
+    			<option value="Tele Sales">Tele Sales</option>
+    			<option value="Online Leads">Online Leads</option>
+  		</select><br>
+  		<input type="number" name="Sales_Velocity" placeholder="Sales Velocity" required="required" />
+  		<input type="number" name="Sales_Stage_Iterations" placeholder="Sales Stage Iterations" required="required" />
+  		<input type="number" name="Opportunity_Size_USD" placeholder="Opportunity Size (USD)" required="required" />
+  		<select name="Client_Revenue_Sizing" placeholder="Client_Revenue_Sizing" required="required">
+			<option value="" disabled selected>Client Revenue Sizing</option>
+    			<option value="100K or less">100K or less</option>
+    			<option value="More than 1M">More than 1M</option>
+    			<option value="250K to 500K">250K to 500K</option>
+    			<option value="500K to 1M">500K to 1M</option>
+    			<option value="100K to 250K">100K to 250K</option>
+  		</select><br>
+  		<select name="Client_Employee_Sizing" placeholder="Client Employee Sizing" required="required">
+			<option value="" disabled selected>Client Employee Sizing</option>
+    			<option value="1K or less">1K or less</option>
+			<option value="More than 25K">More than 25K</option>
+			<option value="5K to 15K">5K to 15K</option>
+			<option value="1K to 5K">1K to 5K</option>
+			<option value="15K to 25K">15K to 25K</option>
+		</select><br>
+		<select name="Business_from_Client_Last_Year" placeholder="Business from Client Last Year" required="required">
+			<option value="" disabled selected>Business from Client (Last Year)</option>
+			<option value="0 (No business)">0 (No business)</option>
+			<option value="More than 100,000">More than 100,000</option>
+			<option value="50,000 - 100,000">50,000 - 100,000</option>
+			<option value="25,000 - 50,000">25,000 - 50,000</option>
+			<option value="0 - 25,000">0 - 25,000</option>
+		</select><br>
+		<select name="Compete_Intel" placeholder="Compete Intel" required="required">
+			<option value="" disabled selected>Compete Intel</option>
+			<option value="Unknown">Unknown</option>
+			<option value="Known">Known</option>
+			<option value="None">None</option>
+		</select><br>
+  		<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+	</form>
+
+	<br>
+	<br>
+	{{ prediction_text }}
+
+
+
+ </div>
+
+
+</body>
+</html>
